@@ -18,6 +18,9 @@ var total_souls_earned: int = 0
 @onready var pay_debt_btn = $UI/BottomPanel2/PayDebtButton 
 
 func _ready() -> void:
+	$BackgroundMusic.volume_db = -80
+	var tween = create_tween()
+	tween.tween_property($BackgroundMusic, "volume_db", 0.0, 1.0)
 	
 	hero_spawn_btn.pressed.connect(_on_spawn_button_pressed)
 	hero_spawn_btn.button_down.connect(_on_hero_button_down)

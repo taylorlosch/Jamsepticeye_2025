@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bni030nknkb6o"]
+[gd_scene load_steps=16 format=4 uid="uid://bni030nknkb6o"]
 
 [ext_resource type="Script" uid="uid://b0yrbn3u6qmlw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://b47o4hk2bj17t" path="res://scripts/minimal_8_base_v2_1-bit.png" id="2_sugp2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cqyec636bhbta" path="res://sprites/button_pressed.png" id="6_tipki"]
 [ext_resource type="Texture2D" uid="uid://lnyihdyea8pn" path="res://sprites/button_hover.png" id="7_tipki"]
 [ext_resource type="Texture2D" uid="uid://bc1getehfnhvw" path="res://sprites/paydebt_icon.png" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://pamcjm3smk5d" path="res://audio/8 Bit RPG Game Music (Retro Chiptune) MP3 Download - Zelda Style! - FesliyanStudios Background Music.mp3" id="10_choun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("2_sugp2")
@@ -775,3 +776,8 @@ offset_right = 62.0
 offset_bottom = 139.0
 theme_override_fonts/font = ExtResource("5_tbgi4")
 text = "Souls: 0"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_choun")
+volume_db = -10.0
+autoplay = true
