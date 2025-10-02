@@ -8,6 +8,14 @@ var auto_spawn_enabled: bool = false
 var auto_spawn_rate: float = 1.0
 var auto_spawn_level: int = 0  
 
+func reset_game() -> void:
+	spirits = 0
+	spirits_per_hero = 1
+	heroes_per_click = 1
+	auto_spawn_enabled = false
+	auto_spawn_rate = 2.0
+	auto_spawn_level = 0
+
 # Called when spirit is collected
 func add_spirits(amount: int) -> void:
 	spirits += amount

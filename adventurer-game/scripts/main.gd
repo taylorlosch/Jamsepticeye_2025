@@ -1,12 +1,13 @@
 extends Node2D
 
 var hero_scene = preload("res://scenes/hero.tscn")
+var end_screen_scene = preload("res://scenes/ui/EndScreen.tscn")
 
 var max_heroes: int = 300
 var upgrade_more_heroes_cost: int = 10
 var upgrade_auto_spawn_cost: int = 500
 var auto_spawn_timer: float = 0.0
-var pay_debt_cost: int = 10000
+var pay_debt_cost: int = 10
 
 var total_souls_earned: int = 0
 
@@ -59,7 +60,6 @@ func _on_hero_button_up() -> void:
 	
 		
 func _on_spawn_button_pressed() -> void:
-	
 	var current_hero_count = get_tree().get_nodes_in_group("heroes").size()
 	
 	
@@ -114,22 +114,25 @@ func update_auto_spawn_button_text() -> void:
 		upgrade_auto_spawn_btn.text = str(upgrade_auto_spawn_cost)
 
 func _on_pay_debt_pressed() -> void:
-	var cost = 10
-	
-	if GameManager.spend_spirits(cost):
+	if GameManager.spend_spirits(pay_debt_cost):  # Uses the 10000 cost variable
 		print("Debt paid! Triggering ending...")
-		# TODO: Add ending sequence later
+		trigger_ending()
 	else:
-		print("Not enough souls! Need ", cost, " but have ", GameManager.spirits)
+		print("Not enough souls! Need ", pay_debt_cost, " but have ", GameManager.spirits)
 		
-func update_pay_debt_button_text() -> void:
-	var cost = 10000
+func trigger_ending() -> void:
+	set_process(false)
+	var total = total_souls_earned
+	var end_screen = end_screen_scene.instantiate()
+	add_child(end_screen)
+	end_screen.show_ending(total)
 	
+func update_pay_debt_button_text() -> void:
 	if pay_debt_btn.has_node("CostLabel"):
-		pay_debt_btn.get_node("CostLabel").text = str(cost)
+		pay_debt_btn.get_node("CostLabel").text = str(pay_debt_cost)  # Use variable, not hardcoded 10000
+	
 		
 func _process(delta: float) -> void:
-	# Update spirit count display
 	spirit_label.text = "Souls: " + str(GameManager.spirits)
 	
 	# Track total souls (current + spent)

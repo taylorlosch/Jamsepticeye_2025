@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgc1yyonghtij"]
+
+[ext_resource type="Script" uid="uid://wu81okex2ct5" path="res://scripts/end_screen.gd" id="1_6q23a"]
+[ext_resource type="FontFile" uid="uid://q45m5gpswn2s" path="res://sprites/Minecraft.ttf" id="2_1imq6"]
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("1_6q23a")
+
+[node name="BlackBackground" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 313.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("2_1imq6")
+text = "\"Huh, I didn't think you'd actually do it...\""
+
+[node name="StatsLabel" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 63.0
+offset_right = 263.0
+offset_bottom = 79.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_1imq6")
+text = "Total Souls Collected: 0"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 119.0
+offset_right = 263.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("2_1imq6")
+text = "But... You Still Owe More"
