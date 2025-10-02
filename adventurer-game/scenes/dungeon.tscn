@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmsi34fa7p3of"]
+
+[ext_resource type="Script" uid="uid://c1waqgycxkabp" path="res://scripts/dungeon.gd" id="1_ubp1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atixq"]
+size = Vector2(11.25, 8.875)
+
+[node name="Dungeon" type="Area2D"]
+script = ExtResource("1_ubp1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.6805227e-07, -2.4375)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_atixq")

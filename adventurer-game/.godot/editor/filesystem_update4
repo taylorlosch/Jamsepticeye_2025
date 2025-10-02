@@ -1,0 +1,7 @@
+res://scenes/main.tscn
+res://scripts/main.gd
+res://autoload/game_manager.gd
+res://scenes/hero.tscn
+res://scripts/hero.gd
+res://scenes/spirit.tscn
+res://scripts/spirit.gd

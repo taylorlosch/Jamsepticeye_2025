@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqnrqyrucnmd1"]
+
+[ext_resource type="Texture2D" uid="uid://b47o4hk2bj17t" path="res://scripts/minimal_8_base_v2_1-bit.png" id="1_3uyx6"]
+[ext_resource type="Script" uid="uid://b3rlbj1xq4gvq" path="res://scripts/hero.gd" id="1_yvbpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv13s"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(16, 416, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7pyx"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(24, 416, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2sko"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(40, 384, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo806"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(48, 384, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvbpl"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(40, 400, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06baw"]
+atlas = ExtResource("1_3uyx6")
+region = Rect2(48, 400, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mv13s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv13s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7pyx")
+}],
+"loop": true,
+"name": &"archer_frames",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2sko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo806")
+}],
+"loop": true,
+"name": &"mage_frames",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvbpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06baw")
+}],
+"loop": true,
+"name": &"warrior_frames",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyx6"]
+size = Vector2(8, 8)
+
+[node name="Hero" type="Area2D"]
+script = ExtResource("1_yvbpl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mv13s")
+animation = &"warrior_frames"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_3uyx6")

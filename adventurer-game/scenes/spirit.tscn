@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy0p3iayl41dv"]
+
+[ext_resource type="Script" uid="uid://cm2bp7xphr2so" path="res://scripts/spirit.gd" id="1_4vn76"]
+[ext_resource type="Texture2D" uid="uid://dnkh18kisf6dj" path="res://sprites/ghost_white.png" id="2_4vn76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcyu3"]
+atlas = ExtResource("2_4vn76")
+region = Rect2(40, 480, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihfss"]
+atlas = ExtResource("2_4vn76")
+region = Rect2(48, 480, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7kdx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcyu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihfss")
+}],
+"loop": true,
+"name": &"float",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7nwk"]
+radius = 3.0
+
+[node name="Spirit" type="Area2D"]
+script = ExtResource("1_4vn76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7kdx")
+animation = &"float"
+frame_progress = 0.7795158
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_k7nwk")

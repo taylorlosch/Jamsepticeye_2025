@@ -1,0 +1,14 @@
+Label
+TextureButton
+Button
+TileMapLayer
+HBoxContainer
+Sprite2D
+Panel
+CanvasLayer
+CollisionShape2D
+AnimatedSprite2D
+Area2D
+ColorRect
+Marker2D
+StaticBody2D
