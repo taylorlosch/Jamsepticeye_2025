@@ -1,12 +1,12 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1759387626
+::res://::1759422865
 icon.svg::CompressedTexture2D::6136070820005727012::1759358889::1759358896::1::::<><><>0<>0<>71ab13a9ea2c21fe71312982df08a8be<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://autoload/::1759384145
 game_manager.gd::GDScript::6490781284867182170::1759384145::0::1::::<>Node<><>0<>0<><>::
-::res://scenes/::1759387573
+::res://scenes/::1759389862
 dungeon.tscn::PackedScene::3266382876038595849::1759366768::0::1::::<><><>0<>0<><>::uid://c1waqgycxkabp::::res://scripts/dungeon.gd
 hero.tscn::PackedScene::3537341142017889144::1759386738::0::1::::<><><>0<>0<><>::uid://b47o4hk2bj17t::::res://scripts/minimal_8_base_v2_1-bit.png<>uid://b3rlbj1xq4gvq::::res://scripts/hero.gd
-main.tscn::PackedScene::3316959933706831824::1759387573::0::1::::<><><>0<>0<><>::uid://b0yrbn3u6qmlw::::res://scripts/main.gd<>uid://b47o4hk2bj17t::::res://scripts/minimal_8_base_v2_1-bit.png<>uid://bmsi34fa7p3of::::res://scenes/dungeon.tscn<>uid://bcfwqpth8ilcy::::res://sprites/herobutton_2.png<>uid://dab7dlwfi7q5x::::res://sprites/button_normall.png<>uid://q45m5gpswn2s::::res://sprites/Minecraft.ttf<>uid://cqyec636bhbta::::res://sprites/button_pressed.png<>uid://lnyihdyea8pn::::res://sprites/button_hover.png
+main.tscn::PackedScene::3316959933706831824::1759389862::0::1::::<><><>0<>0<><>::uid://b0yrbn3u6qmlw::::res://scripts/main.gd<>uid://b47o4hk2bj17t::::res://scripts/minimal_8_base_v2_1-bit.png<>uid://bmsi34fa7p3of::::res://scenes/dungeon.tscn<>uid://bcfwqpth8ilcy::::res://sprites/herobutton_2.png<>uid://dab7dlwfi7q5x::::res://sprites/button_normall.png<>uid://q45m5gpswn2s::::res://sprites/Minecraft.ttf<>uid://cqyec636bhbta::::res://sprites/button_pressed.png<>uid://lnyihdyea8pn::::res://sprites/button_hover.png<>uid://bc1getehfnhvw::::res://sprites/paydebt_icon.png
 spirit.tscn::PackedScene::8896364920657529851::1759387271::0::1::::<><><>0<>0<><>::uid://cm2bp7xphr2so::::res://scripts/spirit.gd<>uid://dnkh18kisf6dj::::res://sprites/ghost_white.png
 ui.tscn::PackedScene::8412358923098828665::1759358979::0::1::::<><><>0<>0<><>::
 ::res://scripts/::1759387366

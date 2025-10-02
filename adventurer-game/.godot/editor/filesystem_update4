@@ -1,1 +1,5 @@
+res://scripts/dungeon.gd
+res://autoload/game_manager.gd
+res://scripts/hero.gd
+res://scripts/main.gd
 res://scenes/main.tscn

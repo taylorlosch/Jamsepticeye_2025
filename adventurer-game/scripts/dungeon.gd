@@ -5,16 +5,14 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 func _process(delta: float) -> void:
-	# Get all overlapping areas
 	var overlapping = get_overlapping_areas()
 	
-	# Delete any heroes touching the dungeon
 	for area in overlapping:
 		if area.name == "Hero":
 			if area.has_method("die"):
-				area.die()  # Call hero's die function
+				area.die() 
 			else:
-				area.queue_free()  # Fallback
+				area.queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	print("Body entered: ", body.name)

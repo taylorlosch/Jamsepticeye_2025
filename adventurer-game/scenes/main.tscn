@@ -742,7 +742,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
 
-[node name="PayDebt" type="TextureButton" parent="UI/BottomPanel2"]
+[node name="PayDebtButton" type="TextureButton" parent="UI/BottomPanel2"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 12.0

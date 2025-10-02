@@ -5,8 +5,8 @@ var heroes_per_click: int = 1
 
 
 var auto_spawn_enabled: bool = false
-var auto_spawn_rate: float = 1.0  # Seconds between auto-spawns
-var auto_spawn_level: int = 0  # Track how many times upgraded
+var auto_spawn_rate: float = 1.0
+var auto_spawn_level: int = 0  
 
 # Called when spirit is collected
 func add_spirits(amount: int) -> void:
