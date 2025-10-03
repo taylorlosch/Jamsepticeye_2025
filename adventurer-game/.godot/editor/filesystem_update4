@@ -1,2 +1,6 @@
 res://scenes/main.tscn
 res://scripts/main.gd
+res://scenes/hero.tscn
+res://scripts/hero.gd
+res://sprites/hero_warrior.tres
+res://scenes/ui/DialogueBox.tscn

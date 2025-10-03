@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://d0wko2lagnwf"]
+
+[ext_resource type="Texture2D" uid="uid://b47o4hk2bj17t" path="res://scripts/minimal_8_base_v2_1-bit.png" id="1_bth3s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjihq"]
+atlas = ExtResource("1_bth3s")
+region = Rect2(16, 416, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhjpm"]
+atlas = ExtResource("1_bth3s")
+region = Rect2(24, 416, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjihq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhjpm")
+}],
+"loop": true,
+"name": &"archer",
+"speed": 4.0
+}]
