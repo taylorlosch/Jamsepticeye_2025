@@ -18,7 +18,26 @@ var total_souls_earned: int = 0
 @onready var pay_debt_btn = $UI/BottomPanel2/PayDebtButton 
 @onready var click_sound = $UI/ClickSoundPlayer
 
+var dialogue_box_scene = preload("res://scenes/ui/DialogueBox.tscn")
+var dialogue_box: CanvasLayer = null
+
+
+
+# Track which dialogues have been shown
+var dialogues_shown: Dictionary = {
+	"intro": false,
+	"100": false,
+	"400": false,
+	"5000": false
+}
+
 func _ready() -> void:
+	dialogue_box = dialogue_box_scene.instantiate()
+	add_child(dialogue_box)
+	dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
+	
+	
+	show_intro_dialogue()
 	
 	hero_spawn_btn.pressed.connect(_on_spawn_button_pressed)
 	hero_spawn_btn.button_down.connect(_on_hero_button_down)
@@ -31,6 +50,48 @@ func _ready() -> void:
 	update_auto_spawn_button_text()
 	update_pay_debt_button_text()
 	
+		
+func show_intro_dialogue() -> void:
+	set_process(false) 
+	disable_ui()  
+	dialogue_box.show_dialogue("You owe 10,000 souls mortal. Send adventurers into the dungeon. There death- is your opportunity.")
+	dialogues_shown["intro"] = true
+
+func _on_dialogue_finished() -> void:
+	enable_ui()  
+	set_process(true) 
+
+func check_soul_milestones() -> void:
+	if GameManager.spirits >= 100 and not dialogues_shown["100"]:
+		dialogues_shown["100"] = true
+		set_process(false)
+		disable_ui()
+		dialogue_box.show_dialogue("100 souls collected... If you haven't already... Why not spend some for yourself >:D")
+	
+	if GameManager.spirits >= 400 and not dialogues_shown["400"]:
+		dialogues_shown["400"] = true
+		set_process(false)
+		disable_ui()
+		dialogue_box.show_dialogue("400 souls collected... If you haven't already... Why not spend some for yourself >:D")
+	
+	elif GameManager.spirits >= 5000 and not dialogues_shown["5000"]:
+		dialogues_shown["5000"] = true
+		set_process(false)
+		disable_ui()  # Add this
+		dialogue_box.show_dialogue("5,000 souls... You're halfway there. Don't stop now... Or you'll think about what you've done.. Muhahahaha!")
+
+func disable_ui() -> void:
+	hero_spawn_btn.disabled = true
+	upgrade_more_heroes_btn.disabled = true
+	upgrade_auto_spawn_btn.disabled = true
+	pay_debt_btn.disabled = true
+
+func enable_ui() -> void:
+	hero_spawn_btn.disabled = false
+	upgrade_more_heroes_btn.disabled = false
+	upgrade_auto_spawn_btn.disabled = false
+	pay_debt_btn.disabled = false
+
 func _on_upgrade_more_heroes_pressed() -> void:
 	click_sound.play()
 	if GameManager.spend_spirits(upgrade_more_heroes_cost):
@@ -144,11 +205,9 @@ func update_pay_debt_button_text() -> void:
 		
 func _process(delta: float) -> void:
 	spirit_label.text = "Souls: " + str(GameManager.spirits)
-	
-	# Track total souls (current + spent)
 	total_souls_earned = GameManager.spirits + get_total_spent()
+	check_soul_milestones()
 	
-	# Auto-spawn heroes if enabled
 	if GameManager.auto_spawn_enabled:
 		auto_spawn_timer += delta
 		
