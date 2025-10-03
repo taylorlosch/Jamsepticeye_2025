@@ -7,7 +7,7 @@ var max_heroes: int = 300
 var upgrade_more_heroes_cost: int = 10
 var upgrade_auto_spawn_cost: int = 500
 var auto_spawn_timer: float = 0.0
-var pay_debt_cost: int = 10
+var pay_debt_cost: int = 10000
 
 var total_souls_earned: int = 0
 

@@ -1,7 +1,2 @@
-res://scripts/dungeon.gd
-res://autoload/game_manager.gd
-res://scripts/hero.gd
-res://scripts/main.gd
 res://scenes/main.tscn
-res://scenes/ui/EndScreen.tscn
-res://scripts/end_screen.gd
+res://scripts/main.gd
