@@ -16,11 +16,9 @@ var total_souls_earned: int = 0
 @onready var upgrade_more_heroes_btn = $UI/BottomPanel/UpgradeMoreHeroesButton
 @onready var upgrade_auto_spawn_btn = $UI/BottomPanel/UpgradeAutoSpawnButton
 @onready var pay_debt_btn = $UI/BottomPanel2/PayDebtButton 
+@onready var click_sound = $UI/ClickSoundPlayer
 
 func _ready() -> void:
-	$BackgroundMusic.volume_db = -80
-	var tween = create_tween()
-	tween.tween_property($BackgroundMusic, "volume_db", 0.0, 1.0)
 	
 	hero_spawn_btn.pressed.connect(_on_spawn_button_pressed)
 	hero_spawn_btn.button_down.connect(_on_hero_button_down)
@@ -34,6 +32,7 @@ func _ready() -> void:
 	update_pay_debt_button_text()
 	
 func _on_upgrade_more_heroes_pressed() -> void:
+	click_sound.play()
 	if GameManager.spend_spirits(upgrade_more_heroes_cost):
 		GameManager.heroes_per_click += 1
 		print("Upgraded! Heroes per click: ", GameManager.heroes_per_click)
@@ -63,6 +62,7 @@ func _on_hero_button_up() -> void:
 	
 		
 func _on_spawn_button_pressed() -> void:
+	click_sound.play()
 	var current_hero_count = get_tree().get_nodes_in_group("heroes").size()
 	
 	
@@ -97,6 +97,7 @@ func spawn_heroes_auto() -> void:
 		await get_tree().create_timer(0.05).timeout
 
 func _on_upgrade_auto_spawn_pressed() -> void:
+	click_sound.play()
 	if GameManager.spend_spirits(upgrade_auto_spawn_cost):
 		if not GameManager.auto_spawn_enabled:
 			GameManager.auto_spawn_enabled = true
@@ -117,6 +118,7 @@ func update_auto_spawn_button_text() -> void:
 		upgrade_auto_spawn_btn.text = str(upgrade_auto_spawn_cost)
 
 func _on_pay_debt_pressed() -> void:
+	click_sound.play()
 	if GameManager.spend_spirits(pay_debt_cost):  # Uses the 10000 cost variable
 		print("Debt paid! Triggering ending...")
 		trigger_ending()
@@ -125,6 +127,11 @@ func _on_pay_debt_pressed() -> void:
 		
 func trigger_ending() -> void:
 	set_process(false)
+	
+	# Fade out music
+	var tween = create_tween()
+	tween.tween_property($BackgroundMusic, "volume_db", -80.0, 1.0)
+	
 	var total = total_souls_earned
 	var end_screen = end_screen_scene.instantiate()
 	add_child(end_screen)

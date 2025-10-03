@@ -33,11 +33,7 @@ func type_text(label: Label, text: String) -> void:
 	
 	for i in range(text.length()):
 		label.text += text[i]
-		
-		# Play sound (if you have one)
-		# $TypeSound.play()
-		
-		# Skip delay for spaces
+		$TypeSound.play()
 		if text[i] == " ":
 			continue
 		
@@ -45,7 +41,5 @@ func type_text(label: Label, text: String) -> void:
 		
 		
 func _on_restart_pressed() -> void:
-	# Reset game state
 	GameManager.reset_game()
-	# Reload the main game scene
 	get_tree().reload_current_scene()
