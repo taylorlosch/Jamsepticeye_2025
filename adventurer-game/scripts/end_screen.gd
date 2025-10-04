@@ -14,14 +14,8 @@ func show_ending(total_souls: int) -> void:
 	var tween = create_tween()
 	tween.tween_property($BlackBackground, "modulate:a", 1.0, 1.0)
 	await tween.finished
-	
-	# Type out dialogue
 	await type_text($DialogueLabel, "Huh, I didn't think you'd actually do it...")
-	
-	# Wait a moment
 	await get_tree().create_timer(1.0).timeout
-	
-	# Type out stats
 	var stats_text = "Total Souls Collected: " + str(total_souls)
 	await type_text($StatsLabel, stats_text)
 	await get_tree().create_timer(0.5).timeout

@@ -15,10 +15,9 @@ func _process(delta: float) -> void:
 				area.queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name)
+	pass
 
 func _on_area_entered(area: Area2D) -> void:
-	print("Area entered: ", area.name)
 	
 	if area.name == "Hero":
 		if area.has_method("die"):

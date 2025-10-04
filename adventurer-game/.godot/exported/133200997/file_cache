@@ -1,0 +1,12 @@
+res://scenes/ui/DialogueBox.tscn::1716782d5174c4d3a00962a587a28a9e::1759526566::res://.godot/exported/133200997/export-408fe0e8827d2e3117f7a3499e6fad6e-DialogueBox.scn
+res://scenes/ui/EndScreen.tscn::20f3d334bfe2077e6208ce5ccb8d106b::1759537433::res://.godot/exported/133200997/export-31aa8b825a371e90462dca3afcc44a86-EndScreen.scn
+res://scenes/dungeon.tscn::6c7b5a9685bcb8d6c1e88b7c62f52ff9::1759366768::res://.godot/exported/133200997/export-223498d797d7e21dee273692a40b080c-dungeon.scn
+res://scenes/hero.tscn::eeacccaf90dc603822d2125b264ed600::1759526174::res://.godot/exported/133200997/export-6e6f512f78c3c1887e2bbacd7cff7128-hero.scn
+res://scenes/main.tscn::73479aa7bd6ca526d1276a6eb5671556::1759536925::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/spirit.tscn::c76849c88834bed4466ddbe3e6b3b266::1759387271::res://.godot/exported/133200997/export-0e1f006a2ccc15f4a9d1cd931dbc9419-spirit.scn
+res://sprites/hero_archer.tres::aafb79a9126bda40f5376f6beb04193f::1759525446::res://.godot/exported/133200997/export-6a1d059ad53486de7cb612642852ef79-hero_archer.res
+res://sprites/hero_broom.tres::18dbc081ffaa769d82c42f5ffc501a23::1759525527::res://.godot/exported/133200997/export-a1be9780b7a6997ee2a518be7370d15c-hero_broom.res
+res://sprites/hero_mage.tres::649e90ef62e5263267611f460f391d40::1759525379::res://.godot/exported/133200997/export-e513cf54dc6a933c9d34cefcf70143cc-hero_mage.res
+res://sprites/hero_monk.tres::3518d4bf6ba43b7fba973ab639f7b09f::1759525807::res://.godot/exported/133200997/export-6d5c0775054ed0fd93d5b84221b8a70a-hero_monk.res
+res://sprites/hero_thief.tres::aedf2d6fabda0daf5b2db44c02e83add::1759525772::res://.godot/exported/133200997/export-92efd3870c2cdabb6da82fa99e322eda-hero_thief.res
+res://sprites/hero_warrior.tres::7c67e30a90a2fc04ae61b935a608a7cc::1759526174::res://.godot/exported/133200997/export-b6e4cc846302c390081c85c4ddafab20-hero_warrior.res

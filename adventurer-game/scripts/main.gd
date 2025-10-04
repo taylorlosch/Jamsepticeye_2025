@@ -28,7 +28,11 @@ var dialogues_shown: Dictionary = {
 	"intro": false,
 	"100": false,
 	"400": false,
-	"5000": false
+	"800": false,
+	"1500": false,
+	"2000": false,
+	"5000": false,
+	"8000": false,
 }
 
 func _ready() -> void:
@@ -54,7 +58,7 @@ func _ready() -> void:
 func show_intro_dialogue() -> void:
 	set_process(false) 
 	disable_ui()  
-	dialogue_box.show_dialogue("You owe 10,000 souls mortal. Send adventurers into the dungeon. There death- is your opportunity.")
+	dialogue_box.show_dialogue("You owe 10,000 souls mortal. Send adventurers into the dungeon. Their death- is your opportunity.")
 	dialogues_shown["intro"] = true
 
 func _on_dialogue_finished() -> void:
@@ -66,20 +70,44 @@ func check_soul_milestones() -> void:
 		dialogues_shown["100"] = true
 		set_process(false)
 		disable_ui()
-		dialogue_box.show_dialogue("100 souls collected... If you haven't already... Why not spend some for yourself >:D")
+		dialogue_box.show_dialogue("Look at that, your first 100.. Wasn't so bad right? Those guys chose to go. You only pointed the way.")
 	
 	if GameManager.spirits >= 400 and not dialogues_shown["400"]:
 		dialogues_shown["400"] = true
 		set_process(false)
 		disable_ui()
-		dialogue_box.show_dialogue("400 souls collected... If you haven't already... Why not spend some for yourself >:D")
-	
+		dialogue_box.show_dialogue("The guild is booming now, and your aura has started to change.. Do you feel it?")
+		
+	elif GameManager.spirits >= 800 and not dialogues_shown["800"]:
+		dialogues_shown["800"] = true
+		set_process(false)
+		disable_ui() 
+		dialogue_box.show_dialogue("Got the hang of it now, huh?.. Guess you really are different from them.")
+		
+	elif GameManager.spirits >= 1500 and not dialogues_shown["1500"]:
+		dialogues_shown["1500"] = true
+		set_process(false)
+		disable_ui() 
+		dialogue_box.show_dialogue("I Didn't expect you to pull them in so quick... You've got a knack for this.")
+		
+	elif GameManager.spirits >= 2000 and not dialogues_shown["2000"]:
+		dialogues_shown["2000"] = true
+		set_process(false)
+		disable_ui() 
+		dialogue_box.show_dialogue("Humans really are fools... They don't even see your changing...")
+		
 	elif GameManager.spirits >= 5000 and not dialogues_shown["5000"]:
 		dialogues_shown["5000"] = true
 		set_process(false)
-		disable_ui()  # Add this
-		dialogue_box.show_dialogue("5,000 souls... You're halfway there. Don't stop now... Or you'll think about what you've done.. Muhahahaha!")
-
+		disable_ui() 
+		dialogue_box.show_dialogue("Half way ther- Hey... Why do you look cooler than me? Tch! No fair...")
+	
+	elif GameManager.spirits >= 8000 and not dialogues_shown["8000"]:
+		dialogues_shown["8000"] = true
+		set_process(false)
+		disable_ui() 
+		dialogue_box.show_dialogue("Look, you werne't really supposed to be ok doing this... Just. Just avoid the pay debt button there ok?")
+		
 func disable_ui() -> void:
 	hero_spawn_btn.disabled = true
 	upgrade_more_heroes_btn.disabled = true
@@ -95,12 +123,9 @@ func enable_ui() -> void:
 func _on_upgrade_more_heroes_pressed() -> void:
 	click_sound.play()
 	if GameManager.spend_spirits(upgrade_more_heroes_cost):
-		GameManager.heroes_per_click += 1
-		print("Upgraded! Heroes per click: ", GameManager.heroes_per_click)
-		upgrade_more_heroes_cost *= 2
+		GameManager.heroes_per_click += 2
+		upgrade_more_heroes_cost *= 4
 		update_upgrade_button_text()
-	else:
-		print("Not enough spirits! Need ", upgrade_more_heroes_cost, " but have ", GameManager.spirits)
 
 func update_upgrade_button_text() -> void:
 	var next_level = GameManager.heroes_per_click + 1
@@ -129,7 +154,6 @@ func _on_spawn_button_pressed() -> void:
 	
 	for i in GameManager.heroes_per_click:
 		if current_hero_count + i >= max_heroes:
-			print("Too many heroes! Max: ", max_heroes)
 			break
 			
 		var hero = hero_scene.instantiate()
@@ -162,15 +186,11 @@ func _on_upgrade_auto_spawn_pressed() -> void:
 	if GameManager.spend_spirits(upgrade_auto_spawn_cost):
 		if not GameManager.auto_spawn_enabled:
 			GameManager.auto_spawn_enabled = true
-			print("Auto-spawn enabled!")
 		else:
 			GameManager.auto_spawn_level += 1
 			GameManager.auto_spawn_rate = max(0.5, GameManager.auto_spawn_rate * 0.8)
-			print("Auto-spawn upgraded! Level: ", GameManager.auto_spawn_level)
 		upgrade_auto_spawn_cost *= 4
 		update_auto_spawn_button_text()
-	else:
-		print("Not enough spirits! Need ", upgrade_auto_spawn_cost, " but have ", GameManager.spirits)
 
 func update_auto_spawn_button_text() -> void:
 	if upgrade_auto_spawn_btn.has_node("CostLabel"):
@@ -180,16 +200,11 @@ func update_auto_spawn_button_text() -> void:
 
 func _on_pay_debt_pressed() -> void:
 	click_sound.play()
-	if GameManager.spend_spirits(pay_debt_cost):  # Uses the 10000 cost variable
-		print("Debt paid! Triggering ending...")
+	if GameManager.spend_spirits(pay_debt_cost): 
 		trigger_ending()
-	else:
-		print("Not enough souls! Need ", pay_debt_cost, " but have ", GameManager.spirits)
 		
 func trigger_ending() -> void:
 	set_process(false)
-	
-	# Fade out music
 	var tween = create_tween()
 	tween.tween_property($BackgroundMusic, "volume_db", -80.0, 1.0)
 	
@@ -200,7 +215,7 @@ func trigger_ending() -> void:
 	
 func update_pay_debt_button_text() -> void:
 	if pay_debt_btn.has_node("CostLabel"):
-		pay_debt_btn.get_node("CostLabel").text = str(pay_debt_cost)  # Use variable, not hardcoded 10000
+		pay_debt_btn.get_node("CostLabel").text = str(pay_debt_cost)
 	
 		
 func _process(delta: float) -> void:
@@ -216,16 +231,10 @@ func _process(delta: float) -> void:
 			spawn_heroes_auto()
 
 func get_total_spent() -> int:
-	# Calculate how much was spent on upgrades
-	# This is an approximation - you could track it more precisely
 	var spent = 0
-	
-	# Heroes per click upgrades (10, 20, 40, 80...)
 	if GameManager.heroes_per_click > 1:
 		for i in range(1, GameManager.heroes_per_click):
 			spent += 10 * pow(2, i - 1)
-	
-	# Auto spawn upgrades (500, 2000, 8000...)
 	if GameManager.auto_spawn_level > 0:
 		for i in range(GameManager.auto_spawn_level):
 			spent += 500 * pow(4, i)

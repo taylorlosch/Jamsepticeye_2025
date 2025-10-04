@@ -16,12 +16,9 @@ func reset_game() -> void:
 	auto_spawn_rate = 2.0
 	auto_spawn_level = 0
 
-# Called when spirit is collected
 func add_spirits(amount: int) -> void:
 	spirits += amount
-	print("Spirits collected! Total: ", spirits)
 
-# Called when spending spirits on upgrades
 func spend_spirits(amount: int) -> bool:
 	if spirits >= amount:
 		spirits -= amount

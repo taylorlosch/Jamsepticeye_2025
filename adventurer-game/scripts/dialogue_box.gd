@@ -15,10 +15,8 @@ func show_dialogue(text: String) -> void:
 	is_typing = true
 	can_continue = false
 	
-	# Type out text
 	await type_text(text)
-	
-	# Show continue prompt
+
 	is_typing = false
 	can_continue = true
 	$DialoguePanel/ContinuePrompt.visible = true
@@ -36,7 +34,7 @@ func type_text(text: String) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and can_continue and visible:
-		can_continue = false  # Prevent multiple triggers
+		can_continue = false 
 		hide()
 		dialogue_finished.emit()
-		get_viewport().set_input_as_handled()  # Consume the input so it doesn't reach other nodes
+		get_viewport().set_input_as_handled()
