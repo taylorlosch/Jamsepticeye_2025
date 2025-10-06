@@ -58,7 +58,7 @@ func _ready() -> void:
 func show_intro_dialogue() -> void:
 	set_process(false) 
 	disable_ui()  
-	dialogue_box.show_dialogue("You owe 10,000 souls mortal. Send adventurers into the dungeon. Their death- is your opportunity.")
+	dialogue_box.show_dialogue("You owe 10,000 souls mortal. Send adventurers into the dungeon. Their death- is you're opportunity.")
 	dialogues_shown["intro"] = true
 
 func _on_dialogue_finished() -> void:
